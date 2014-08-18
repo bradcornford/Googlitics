@@ -110,13 +110,7 @@ class Analytics extends AnalyticsBase implements AnalyticalInterface {
 		$this->addItem("ga('require', 'ecommerce');");
 		$item = "ga('ecommerce:addTransaction', { " .
 			"'id': '{$id}', ";
-
-		if (!empty($options)) {
-			foreach ($options as $key => $value) {
-				$item .= "'{$key}': '{$value}', ";
-			}
-		}
-
+		$item .= $this->assembleParameters($options);
 		$item = rtrim($item, ', ') . " });";
 		$this->addItem($item);
 		$this->addItem("ga('ecommerce:send');");
@@ -137,13 +131,7 @@ class Analytics extends AnalyticsBase implements AnalyticalInterface {
 		$item = "ga('ecommerce:addItem', { " .
 			"'id': '{$id}', " .
 			"'name': '{$name}', ";
-
-		if (!empty($options)) {
-			foreach ($options as $key => $value) {
-				$item .= "'{$key}': '{$value}', ";
-			}
-		}
-
+		$item .= $this->assembleParameters($options);
 		$item = rtrim($item, ', ') . " });";
 		$this->addItem($item);
 		$this->addItem("ga('ecommerce:send');");

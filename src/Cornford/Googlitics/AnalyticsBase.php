@@ -28,7 +28,7 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	/**
 	 * View
 	 *
-	 * @var \Illuminate\View\View
+	 * @var \Illuminate\View\Environment
 	 */
 	protected $view;
 
@@ -94,11 +94,11 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 			throw new AnalyticsArgumentException('Google Analytics tracking id is required.');
 		}
 
-		$this->setEnabled(isset($options['enabled']) ?: true);
+		$this->setEnabled(isset($options['enabled']) ? $options['enabled'] : true);
 		$this->setId($options['id']);
-		$this->setDomain(isset($options['domain']) ?: 'auto');
-		$this->setAnonymised(isset($options['anonymise']) ?: false);
-		$this->setAutomatic(isset($options['automatic']) ?: false);
+		$this->setDomain(isset($options['domain']) ? $options['domain'] : 'auto');
+		$this->setAnonymised(isset($options['anonymise']) ? $options['anonymise'] : false);
+		$this->setAutomatic(isset($options['automatic']) ? $options['automatic'] : false);
 	}
 
 	/**
@@ -332,6 +332,26 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	public function disableAutomaticTracking()
 	{
 		$this->setAutomatic(false);
+	}
+
+	/**
+	 * Assemble parameters from an array to a string.
+	 *
+	 * @param array $options
+	 *
+	 * @return string
+	 */
+	protected function assembleParameters($options)
+	{
+		$return = '';
+
+		if (!empty($options)) {
+			foreach ($options as $key => $value) {
+				$return .= "'{$key}': '{$value}', ";
+			}
+		}
+
+		return $return;
 	}
 
 }
