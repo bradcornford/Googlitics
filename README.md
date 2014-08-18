@@ -106,4 +106,4 @@ The `render` method allows all tracking items to be rendered to the page, this m
 
 ### License
 
-Setter is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Googlitics is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
