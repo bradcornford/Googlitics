@@ -1,6 +1,6 @@
 # An easy way to integrate Google Analytics with Laravel
 
-[![Latest Stable Version](https://poser.pugx.org/cornford/googlitics/version.png)](https://packagist.org/packages/cornford/googlitics)
+[![Latest Stable Version](https://poser.pugx.org/cornford/Googlitics/version.png)](https://packagist.org/packages/cornford/googlitics)
 [![Total Downloads](https://poser.pugx.org/cornford/googlitics/d/total.png)](https://packagist.org/packages/cornford/googlitics)
 [![Build Status](https://travis-ci.org/bradcornford/Googlitics.svg?branch=master)](https://travis-ci.org/bradcornford/Googlitics)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bradcornford/Googlitics/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bradcornford/Googlitics/?branch=master)
