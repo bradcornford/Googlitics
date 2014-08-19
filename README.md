@@ -33,11 +33,25 @@ Once this operation completes, the next step is to add the service provider. Ope
 
 	'Cornford\Googlitics\AnalyticsServiceProvider',
 
-The final step is to introduce the facade. Open `app/config/app.php`, and add a new item to the aliases array.
+The next step is to introduce the facade. Open `app/config/app.php`, and add a new item to the aliases array.
 
 	'Analytics'         => 'Cornford\Googlitics\Facades\Analytics',
 
+Finally we need to introduce the configuration files into your application/
+
+	php artisan config:publish cornford/googlitics
+
 That's it! You're all set to go.
+
+## Configuration
+
+You can now configure Googlitics in a few simple steps. Open `app/config/packages/cornford/googlitics/config.php` and update the options as needed.
+
+- `enabled` - Enable Google Analytics tracking.
+- `id` A Google - Analytics tracking identifier to link Googlitics to Google Analytics.
+- `domain` - The domain which is being tracked. Leave as 'auto' if you want Googlitics to automatically set the current domain. Otherwise enter your domain, e.g. google.com
+- `anonymise` - Anonymise users IP addresses when tracking them via Googlitics.
+- `automatic` - Enable automatic tracking to ensure users are tracked automatically by Googlitics.
 
 ## Usage
 

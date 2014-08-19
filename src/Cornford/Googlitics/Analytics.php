@@ -107,13 +107,8 @@ class Analytics extends AnalyticsBase implements AnalyticalInterface {
 	 */
 	public function trackTransaction($id, array $options = [])
 	{
-		$this->addItem("ga('require', 'ecommerce');");
-		$item = "ga('ecommerce:addTransaction', { " .
-			"'id': '{$id}', ";
-		$item .= $this->assembleParameters($options);
-		$item = rtrim($item, ', ') . " });";
-		$this->addItem($item);
-		$this->addItem("ga('ecommerce:send');");
+		$options['id'] = $id;
+		$this->trackEcommerce(self::ECOMMERCE_TRANSACTION, $options);
 	}
 
 	/**
@@ -127,14 +122,9 @@ class Analytics extends AnalyticsBase implements AnalyticalInterface {
 	 */
 	public function trackItem($id, $name, array $options = [])
 	{
-		$this->addItem("ga('require', 'ecommerce');");
-		$item = "ga('ecommerce:addItem', { " .
-			"'id': '{$id}', " .
-			"'name': '{$name}', ";
-		$item .= $this->assembleParameters($options);
-		$item = rtrim($item, ', ') . " });";
-		$this->addItem($item);
-		$this->addItem("ga('ecommerce:send');");
+		$options['id'] = $id;
+		$options['name'] = $name;
+		$this->trackEcommerce(self::ECOMMERCE_ITEM, $options);
 	}
 
 	/**
