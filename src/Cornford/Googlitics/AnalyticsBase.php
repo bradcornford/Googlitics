@@ -31,7 +31,7 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	/**
 	 * View
 	 *
-	 * @var \Illuminate\View\Environment
+	 * @var \Illuminate\View\Factory
 	 */
 	protected $view;
 
