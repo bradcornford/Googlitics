@@ -223,7 +223,7 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	 */
 	protected function addItem($value)
 	{
-		return $this->items[] = $value;
+		$this->items[] = $value;
 	}
 
 	/**
@@ -235,7 +235,7 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	 */
 	protected function setItems(array $array)
 	{
-		return $this->items = $array;
+		$this->items = $array;
 	}
 
 	/**

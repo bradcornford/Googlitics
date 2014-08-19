@@ -2,8 +2,6 @@
 
 use Cornford\Googlitics\Contracts\AnalyticalInterface;
 use Cornford\Googlitics\Exceptions\AnalyticsArgumentException;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\View;
 
 class Analytics extends AnalyticsBase implements AnalyticalInterface {
 
