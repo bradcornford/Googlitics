@@ -11,7 +11,7 @@ class AnalyticsSpec extends ObjectBehavior
 	{
 		$application = Mockery::mock('Illuminate\Foundation\Application');
 		$application->shouldReceive('environment')->andReturn('dev');
-		$view = Mockery::mock('Illuminate\View\Environment');
+		$view = Mockery::mock('Illuminate\View\Factory');
 		$view->shouldReceive('make')->andReturn($view);
 		$view->shouldReceive('withItems')->andReturn($view);
 		$view->shouldReceive('render')->andReturn('SCRIPT');
@@ -26,7 +26,7 @@ class AnalyticsSpec extends ObjectBehavior
 	function it_throws_an_exception_with_incorrect_options()
 	{
 		$application = Mockery::mock('Illuminate\Foundation\Application');
-		$view = Mockery::mock('Illuminate\View\Environment');
+		$view = Mockery::mock('Illuminate\View\Factory');
 		$this->shouldThrow('Cornford\Googlitics\Exceptions\AnalyticsArgumentException')
 			->during('__construct', [$application, $view]);
 	}
