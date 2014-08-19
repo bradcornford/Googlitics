@@ -176,7 +176,7 @@ class AnalyticsSpec extends ObjectBehavior
 		$this->getItems()->shouldHaveCount(4);
 		$this->getItems()->shouldReturn([
 			"ga('require', 'ecommerce');",
-			"ga('ecommerce:addTransaction', { 'id': 'ID', 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4' });",
+			"ga('ecommerce:addTransaction', { 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4', 'id': 'ID' });",
 			"ga('ecommerce:send');",
 			"ga('create', 'test', { 'cookieDomain': 'none' });"
 		]);
@@ -202,7 +202,7 @@ class AnalyticsSpec extends ObjectBehavior
 		$this->getItems()->shouldHaveCount(4);
 		$this->getItems()->shouldReturn([
 			"ga('require', 'ecommerce');",
-			"ga('ecommerce:addItem', { 'id': 'ID', 'name': 'Name', 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4' });",
+			"ga('ecommerce:addItem', { 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4', 'id': 'ID', 'name': 'Name' });",
 			"ga('ecommerce:send');",
 			"ga('create', 'test', { 'cookieDomain': 'none' });"
 		]);
