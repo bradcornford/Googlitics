@@ -11,7 +11,7 @@ class AnalyticsSpec extends ObjectBehavior
 	{
 		$application = Mockery::mock('Illuminate\Foundation\Application');
 		$application->shouldReceive('environment')->andReturn('dev');
-		$view = Mockery::mock('Illuminate\View\Environment');
+		$view = Mockery::mock('Illuminate\View\Factory');
 		$view->shouldReceive('make')->andReturn($view);
 		$view->shouldReceive('withItems')->andReturn($view);
 		$view->shouldReceive('render')->andReturn('SCRIPT');
@@ -26,7 +26,7 @@ class AnalyticsSpec extends ObjectBehavior
 	function it_throws_an_exception_with_incorrect_options()
 	{
 		$application = Mockery::mock('Illuminate\Foundation\Application');
-		$view = Mockery::mock('Illuminate\View\Environment');
+		$view = Mockery::mock('Illuminate\View\Factory');
 		$this->shouldThrow('Cornford\Googlitics\Exceptions\AnalyticsArgumentException')
 			->during('__construct', [$application, $view]);
 	}
@@ -176,7 +176,7 @@ class AnalyticsSpec extends ObjectBehavior
 		$this->getItems()->shouldHaveCount(4);
 		$this->getItems()->shouldReturn([
 			"ga('require', 'ecommerce');",
-			"ga('ecommerce:addTransaction', { 'id': 'ID', 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4' });",
+			"ga('ecommerce:addTransaction', { 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4', 'id': 'ID' });",
 			"ga('ecommerce:send');",
 			"ga('create', 'test', { 'cookieDomain': 'none' });"
 		]);
@@ -202,7 +202,7 @@ class AnalyticsSpec extends ObjectBehavior
 		$this->getItems()->shouldHaveCount(4);
 		$this->getItems()->shouldReturn([
 			"ga('require', 'ecommerce');",
-			"ga('ecommerce:addItem', { 'id': 'ID', 'name': 'Name', 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4' });",
+			"ga('ecommerce:addItem', { 'affiliation': '1', 'revenue': '2', 'shipping': '3', 'tax': '4', 'id': 'ID', 'name': 'Name' });",
 			"ga('ecommerce:send');",
 			"ga('create', 'test', { 'cookieDomain': 'none' });"
 		]);

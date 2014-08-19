@@ -3,7 +3,7 @@
 use Cornford\Googlitics\Contracts\AnalyticalBaseInterface;
 use Cornford\Googlitics\Exceptions\AnalyticsArgumentException;
 use Illuminate\Foundation\Application;
-use Illuminate\View\Environment as View;
+use Illuminate\View\Factory as View;
 
 abstract class AnalyticsBase implements AnalyticalBaseInterface
 {
@@ -18,6 +18,9 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	const TYPE_EXCEPTION = 'exception';
 	const TYPE_TIMING = 'timing';
 
+	const ECOMMERCE_TRANSACTION = 'addTransaction';
+	const ECOMMERCE_ITEM = 'addItem';
+
 	/**
 	 * App
 	 *
@@ -28,7 +31,7 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	/**
 	 * View
 	 *
-	 * @var \Illuminate\View\Environment
+	 * @var \Illuminate\View\Factory
 	 */
 	protected $view;
 
@@ -352,6 +355,24 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 		}
 
 		return $return;
+	}
+
+    /**
+     * Track an ecommerce item.
+     *
+     * @param string $type
+     * @param array  $options
+     *
+     * @return void
+     */
+	protected function trackEcommerce($type = self::ECOMMERCE_TRANSACTION, array $options = [])
+	{
+        $this->addItem("ga('require', 'ecommerce');");
+        $item = "ga('ecommerce:{$type}', { ";
+        $item .= $this->assembleParameters($options);
+        $item = rtrim($item, ', ') . " });";
+        $this->addItem($item);
+        $this->addItem("ga('ecommerce:send');");
 	}
 
 }
