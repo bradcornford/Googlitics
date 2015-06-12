@@ -5,7 +5,9 @@
 [![Build Status](https://travis-ci.org/bradcornford/Googlitics.svg?branch=master)](https://travis-ci.org/bradcornford/Googlitics)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bradcornford/Googlitics/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bradcornford/Googlitics/?branch=master)
 
-Think of Googlitics as an easy way to integrate Google Analytics with Laravel 4, providing a variety of helpers to speed up the utilisation of application tracking. These include:
+### For Laravel 4.x, check [version 1.0.0](https://github.com/bradcornford/Googlitics/tree/v1.0.0)
+
+Think of Googlitics as an easy way to integrate Google Analytics with Laravel, providing a variety of helpers to speed up the utilisation of application tracking. These include:
 
 - `Analytics::trackPage`
 - `Analytics::trackScreen`
@@ -22,7 +24,7 @@ Think of Googlitics as an easy way to integrate Google Analytics with Laravel 4,
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `cornford/googlitics`.
 
 	"require": {
-		"cornford/googlitics": "1.*"
+		"cornford/googlitics": "2.*"
 	}
 
 Next, update Composer from the Terminal:
@@ -39,7 +41,7 @@ The next step is to introduce the facade. Open `app/config/app.php`, and add a n
 
 Finally we need to introduce the configuration files into your application/
 
-	php artisan config:publish cornford/googlitics
+	php artisan vendor:publish --provider="Cornford\\Googlitics\\AnalyticsServiceProvider"
 
 That's it! You're all set to go.
 
