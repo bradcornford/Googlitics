@@ -7,7 +7,7 @@
 
     @foreach ($items as $item)
 
-    {{ $item }}
+    {!! $item !!}
 
     @endforeach
 

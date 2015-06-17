@@ -19,7 +19,11 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('cornford/googlitics');
+		$configPath = __DIR__ . '/../../config/config.php';
+		$this->publishes([$configPath => config_path('googlitics.php')], 'googlitics');
+
+		$viewPath = __DIR__ . '/../../views';
+		$this->loadViewsFrom($viewPath, 'googlitics');
 	}
 
 	/**
@@ -29,14 +33,15 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+		$configPath = __DIR__ . '/../../config/config.php';
+		$this->mergeConfigFrom($configPath, 'googlitics');
+
 		$this->app['analytics'] = $this->app->share(function($app)
 		{
-			$config = $app['config']->get('googlitics::config');
-
 			return new Analytics(
 				$this->app->make('Illuminate\Foundation\Application'),
 				$this->app->view,
-				$config
+				$app['config']->get('googlitics')
 			);
 		});
 	}
