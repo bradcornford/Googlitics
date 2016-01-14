@@ -19,11 +19,15 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$configPath = __DIR__ . '/../../config/config.php';
-		$this->publishes([$configPath => config_path('googlitics.php')], 'googlitics');
+		$this->loadViewsFrom(base_path('resources/views/cornford/googlmapper'), 'googlmapper');
 
-		$viewPath = __DIR__ . '/../../views';
-		$this->loadViewsFrom($viewPath, 'googlitics');
+		$this->publishes(
+			[
+				__DIR__ . '/../../config/config.php' => config_path('googlitics.php'),
+				__DIR__ . '/../../views' => base_path('resources/views/cornford/googlitics')
+			],
+			'googlitics'
+		);
 	}
 
 	/**
