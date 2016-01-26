@@ -19,7 +19,7 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->loadViewsFrom(base_path('resources/views/cornford/googlmapper'), 'googlmapper');
+		$this->loadViewsFrom(base_path('resources/views/cornford/googlitics'), 'googlitics');
 
 		$this->publishes(
 			[
