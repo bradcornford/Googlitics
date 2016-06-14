@@ -10,7 +10,10 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*",
+        "illuminate/view": "5.*",
+        "laravel/framework": "5.*"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev",
