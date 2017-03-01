@@ -21,7 +21,7 @@ return array(
 	| Analytics.
 	|
 	*/
-	'id' => null,
+    'id' => env('GOOGLE_TRACKING_ID', 'AIzaSyDlBSG-e2TlAg4OY29OcKXb78kiN0iEeWA'),
 
 	/*
 	|--------------------------------------------------------------------------
