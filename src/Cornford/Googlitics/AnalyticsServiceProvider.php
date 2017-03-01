@@ -40,7 +40,7 @@ class AnalyticsServiceProvider extends ServiceProvider {
 		$configPath = __DIR__ . '/../../config/config.php';
 		$this->mergeConfigFrom($configPath, 'googlitics');
 
-		$this->app['analytics'] = $this->app->share(function($app)
+        $this->app->singleton('analytics', function($app)
 		{
 			return new Analytics(
 				$this->app->make('Illuminate\Foundation\Application'),

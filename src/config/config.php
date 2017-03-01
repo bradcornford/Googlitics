@@ -21,7 +21,7 @@ return array(
 	| Analytics.
 	|
 	*/
-	'id' => null,
+	'id' => env('GOOGLE_API_KEY', 'AIzaSyDlBSG-e2TlAg4OY29OcKXb78kiN0iEeWA'),
 
 	/*
 	|--------------------------------------------------------------------------
