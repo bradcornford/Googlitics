@@ -137,14 +137,8 @@ class Analytics extends AnalyticsBase implements AnalyticalInterface {
 	{
 		$item = "ga('send', 'event', '{$category}'";
 
-		if (!empty($options)) {
-			$item .= ", 'action', { ";
-
-			foreach ($options as $key => $value) {
-				$item .= "'{$key}': {$value}, ";
-			}
-
-			$item = rtrim($item, ', ') . " }";
+		if (count($options)) {
+			$item .= ", 'action', " . @json_encode($options);
 		}
 
 		$item .= ");";

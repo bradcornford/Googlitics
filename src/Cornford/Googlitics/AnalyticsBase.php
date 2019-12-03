@@ -24,14 +24,14 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	/**
 	 * App
 	 *
-	 * @var \Illuminate\Foundation\Application
+	 * @var Application
 	 */
 	protected $application;
 
 	/**
 	 * View
 	 *
-	 * @var \Illuminate\View\Factory
+	 * @var View
 	 */
 	protected $view;
 
@@ -337,26 +337,6 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 		$this->setAutomatic(false);
 	}
 
-	/**
-	 * Assemble parameters from an array to a string.
-	 *
-	 * @param array $options
-	 *
-	 * @return string
-	 */
-	protected function assembleParameters($options)
-	{
-		$return = '';
-
-		if (!empty($options)) {
-			foreach ($options as $key => $value) {
-				$return .= "'{$key}': '{$value}', ";
-			}
-		}
-
-		return $return;
-	}
-
     /**
      * Track an ecommerce item.
      *
@@ -368,10 +348,7 @@ abstract class AnalyticsBase implements AnalyticalBaseInterface
 	protected function trackEcommerce($type = self::ECOMMERCE_TRANSACTION, array $options = [])
 	{
         $this->addItem("ga('require', 'ecommerce');");
-        $item = "ga('ecommerce:{$type}', { ";
-        $item .= $this->assembleParameters($options);
-        $item = rtrim($item, ', ') . " });";
-        $this->addItem($item);
+        $this->addItem("ga('ecommerce:{$type}', " . @json_encode($options) . ");");
         $this->addItem("ga('ecommerce:send');");
 	}
 

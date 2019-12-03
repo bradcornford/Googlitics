@@ -1,6 +1,6 @@
 {
     "name": "cornford/googlitics",
-    "description": "An easy way to intergrate Google Analytics with Laravel.",
+    "description": "An easy way to integrate Google Analytics with Laravel.",
     "keywords": ["laravel", "google", "analytics", "tracking", "statistics"],
     "license": "MIT",
     "authors": [
@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
+        "ext-json": "*",
         "illuminate/support": "^5.0 || ^6.0",
         "illuminate/view": "^5.0 || ^6.0",
         "laravel/framework": "^5.0 || ^6.0"
