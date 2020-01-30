@@ -10,20 +10,31 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.2",
         "ext-json": "*",
-        "illuminate/support": "^5.0 || ^6.0",
-        "illuminate/view": "^5.0 || ^6.0",
-        "laravel/framework": "^5.0 || ^6.0"
+        "illuminate/support": "^6.0",
+        "illuminate/view": "^6.0",
+        "laravel/framework": "^6.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "2.0.*@dev",
-        "mockery/mockery": "0.9.1"
+        "phpspec/phpspec": "^6.0",
+        "mockery/mockery": "^1.2.4",
+        "phpunit/phpunit": "^8.4"
     },
     "autoload": {
         "psr-0": {
             "Cornford\\Googlitics": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cornford\\Googlitics\\AnalyticsServiceProvider"
+            ],
+            "aliases": {
+                "Mapper": "Cornford\\Googlitics\\Facades\\AnalyticsFacade"
+            }
+        }
+    }
 }

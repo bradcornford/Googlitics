@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class Analytics extends Facade {
+class AnalyticsFacade extends Facade {
 
     protected static function getFacadeAccessor() { return 'analytics'; }
 

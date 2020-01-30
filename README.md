@@ -5,7 +5,9 @@
 [![Build Status](https://travis-ci.org/bradcornford/Googlitics.svg?branch=master)](https://travis-ci.org/bradcornford/Googlitics)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bradcornford/Googlitics/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bradcornford/Googlitics/?branch=master)
 
-### For Laravel 4.x, check [version 1.0.0](https://github.com/bradcornford/Googlitics/tree/v1.0.0)
+### For Laravel 5.x, check [version 2.5.0](https://github.com/bradcornford/Googlitics/tree/v2.5.0)
+
+### For Laravel 4.x, check [version 1.1.0](https://github.com/bradcornford/Googlitics/tree/v1.1.0)
 
 Think of Googlitics as an easy way to integrate Google Analytics with Laravel, providing a variety of helpers to speed up the utilisation of application tracking. These include:
 
@@ -24,7 +26,7 @@ Think of Googlitics as an easy way to integrate Google Analytics with Laravel, p
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `cornford/googlitics`.
 
 	"require": {
-		"cornford/googlitics": "2.*"
+		"cornford/googlitics": "3.*"
 	}
 
 Next, update Composer from the Terminal:
@@ -33,15 +35,15 @@ Next, update Composer from the Terminal:
 
 Once this operation completes, the next step is to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
 
-	'Cornford\Googlitics\AnalyticsServiceProvider',
+	Cornford\Googlitics\AnalyticsServiceProvider::class,
 
 The next step is to introduce the facade. Open `app/config/app.php`, and add a new item to the aliases array.
 
-	'Analytics'         => 'Cornford\Googlitics\Facades\Analytics',
+	'Analytics'         => Cornford\Googlitics\Facades\AnalyticsFacade::class,
 
 Finally we need to introduce the configuration files into your application/
 
-	php artisan vendor:publish --provider="Cornford\\Googlitics\\AnalyticsServiceProvider"
+	php artisan vendor:publish --provider="Cornford\Googlitics\AnalyticsServiceProvider" --tag=googlitics
 
 That's it! You're all set to go.
 
