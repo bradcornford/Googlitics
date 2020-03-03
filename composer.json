@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=5.2",
+        "php": ">=7.2",
         "ext-json": "*",
         "illuminate/support": "^6.0",
         "illuminate/view": "^6.0",
