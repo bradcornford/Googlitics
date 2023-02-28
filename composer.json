@@ -12,9 +12,9 @@
     "require": {
         "php": "^7.4.0 || ^8.1",
         "ext-json": "*",
-        "illuminate/support": "^8.0",
-        "illuminate/view": "^8.0",
-        "laravel/framework": "^8.0",
+        "illuminate/support": "^9.0",
+        "illuminate/view": "^9.0",
+        "laravel/framework": "^9.0",
         "laravel/helpers": "^1.1"
     },
     "require-dev": {
